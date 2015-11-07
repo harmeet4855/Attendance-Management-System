@@ -19,7 +19,6 @@ angular
     'ngAria',
     'ngMaterial',
     'ngMessages',
-    'materialCalendar',
     'LocalStorageModule'
   ])
   .config(function($mdThemingProvider) {

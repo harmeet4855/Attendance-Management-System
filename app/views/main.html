@@ -1,9 +1,36 @@
 <div class="container">
   <div class="row" >
     <div class="col-sm-offset-3 col-sm-6" id="loginPortal">
-      <h1 id="loginHeader"><span class="fa fa-sign-in"></span>Login</h1>
+      <h1 id="loginHeader"><span class="fa fa-sign-in"></span>   Login</h1>
 
-      <!-- LOGIN FORM -->
+      <!--<div  layout="column" ng-cloak>-->
+        <!--<md-content layout-padding>-->
+          <!--<form name="userForm">-->
+            <!--<md-input-container class="md-block">-->
+              <!--<label>Username</label>-->
+              <!--<input md-minlength="3" md-maxlength="20" required name="name" ng-model="generalUser.username">-->
+              <!--<div ng-messages="userForm.name.$error">-->
+                <!--<div ng-message="required">This is required.</div>-->
+                <!--<div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>-->
+                <!--<div ng-message="md-minlength">The name has to be more than 3 characters long.</div>-->
+              <!--</div>-->
+            <!--</md-input-container>-->
+            <!--<md-input-container class="md-block">-->
+              <!--<label>Password</label>-->
+              <!--<input md-minlength="3" md-maxlength="20" required type="password" name="password" ng-model="generalUser.password">-->
+              <!--<div ng-messages="userForm.password.$error">-->
+                <!--<div ng-message="required">This is required.</div>-->
+                <!--<div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>-->
+                <!--<div ng-message="md-minlength">The name has to be more than 3 characters long.</div>-->
+              <!--</div>-->
+            <!--</md-input-container>-->
+            <!--<div class="form-group">-->
+              <!--<md-button class="md-raised" ng-click="submit(generalUser.username,generalUser.password)"> Submit </md-button>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</md-content>-->
+      <!--</div>-->
+
       <form id="loginForm" name="userForm" novalidate>
 
         <div class="form-group" ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid }">
@@ -37,6 +64,10 @@
               <p ng-message="maxlength">Your password is too long</p>
               <!--<p ng-message="email">This needs to be a valid email</p>-->
             </div>
+          </div>
+
+          <div>
+            <h5 class="errMsg">{{errMsg | uppercase}}</h5>
           </div>
 
         </div>

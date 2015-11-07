@@ -1,37 +1,40 @@
-<div class="container">
-  <md-toolbar class="md-menu-toolbar">
-    <div class="md-toolbar-tools ">
-      <h6>WELCOME <br>{{userIdentity | uppercase}}</h6>
-      <div ng-show="!(userIdentity === 'admin')" ng-hide="userIdentity === 'admin'" flex="80"></div>
-      <div ng-show="userIdentity === 'admin'" ng-hide="!(userIdentity === 'admin')" flex="70"></div>
-      <div class="main-fab ">
-        <md-button ng-click="logoutUser()" class=" md-fab md-accent" id="logoutBtn">
-          <md-tooltip md-direction="top">
-            Logout
-          </md-tooltip>
-          <md-icon md-svg-src="images/leftarrow30.svg"></md-icon>
-        </md-button>
+<div class="container attendanceHolder holders">
+    <md-card>
+      <md-toolbar class="md-menu-toolbar">
+      <div class="md-toolbar-tools ">
+        <h5>Welcome <br>{{userIdentity}}</h5>
+        <div ng-show="!(userIdentity === 'admin')" ng-hide="userIdentity === 'admin'" flex="80"></div>
+        <div ng-show="userIdentity === 'admin'" ng-hide="!(userIdentity === 'admin')" flex="70"></div>
+        <div  class="main-fab " ng-show="userIdentity === 'admin'" ng-hide="!(userIdentity === 'admin')">
+          <md-button ng-click="adminToUserlist()"  class=" md-fab md-accent" id="userlistBtn">
+            <md-tooltip md-direction="top">
+              Userlist
+            </md-tooltip>
+            <i class="fa fa-list-ul"></i>
+          </md-button>
+        </div>
+        <div class="main-fab ">
+          <md-button ng-click="logoutUser()" class=" md-fab md-accent" id="logoutBtn">
+            <md-tooltip md-direction="right">
+              Logout
+            </md-tooltip>
+            <i class="fa fa-sign-out"></i>
+          </md-button>
+        </div>
       </div>
-      <div  class="main-fab " ng-show="userIdentity === 'admin'" ng-hide="!(userIdentity === 'admin')">
-        <md-button ng-click="adminToUserlist()"  class=" md-fab md-accent" id="addUserBtn">
-          <md-tooltip md-direction="right">
-            Userlist
-          </md-tooltip>
-          o
-        </md-button>
-      </div>
-    </div>
-  </md-toolbar>
-
+    </md-toolbar>
+    </md-card>
 
     <md-content ng-show="!(userIdentity === 'admin')" ng-hide="userIdentity === 'admin'">
       <md-card>
       <md-card-content>
         <h4 >{{todayDate | date }}</h4>
-        <h2 class="md-title">Today's Attendance</h2>
+        <h2 class="md-title">Quote of the day</h2>
+        <br>
         <p>
-          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible."
+          <br>- Francis of Assisi
+
         </p>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center">
@@ -39,13 +42,13 @@
           <md-tooltip md-direction="top">
             Starting Work Time
           </md-tooltip>
-          Start:<br>{{startTime}}
+          <b>Start</b>:<br>{{startTime}}
         </md-switch>
         <md-switch ng-disabled="data.cb2===data.cb1" ng-model="data.cb2" ng-click="showConfirmEnd($event)" aria-label="Switch 2" class="md-block">
           <md-tooltip md-direction="top">
             Ending Work Time
           </md-tooltip>
-          End:<br>{{endTime}}
+          <b>End</b>:<br>{{endTime}}
         </md-switch>
       </md-card-actions>
       </md-card>
@@ -53,7 +56,7 @@
 
       <br>
 
-    <md-content>
+    <md-content class="attendanceHolder">
       <md-card>
       <md-toolbar>
         <div class="md-toolbar-tools">
@@ -62,62 +65,23 @@
           </h2>
         </div>
       </md-toolbar>
-      <md-content class="attendanceChart">
-        <h5 class="md-title" id="datepickerHeading">Pick a date to see attendance</h5>
-        <md-datepicker ng-model="myDate" md-placeholder="Enter date"
-                       md-min-date="minDate" md-max-date="maxDate">
-        </md-datepicker>
-        <h5>{{myDate | date}}</h5>
-      </md-content>
+      <!--<md-content class="attendanceChart">-->
+        <!--<h5 class="md-title" id="datepickerHeading">Pick a date to see attendance</h5>-->
+        <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"-->
+                       <!--md-min-date="minDate" md-max-date="maxDate">-->
+        <!--</md-datepicker>-->
+        <!--<h5>{{myDate | date}}</h5>-->
+      <!--</md-content>-->
 
-      <div class="attendanceChart">
-        <form>
-          <div class="form-group">
-            <div class="input-group">
-              <!--<div class="input-group-addon"><i class="fa fa-search"></i></div>-->
-              <input type="text" class="form-control" placeholder="Search da Fish" ng-model="searchFish">
-            </div>
-          </div>
-        </form>
-
-        <!--<table class="table">-->
-
-          <!--<thead>-->
-          <!--<tr>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'name'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>-->
-              <!--</a>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'fish'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'fish' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'fish' && sortReverse" class="fa fa-caret-up"></span>-->
-              <!--</a>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'tastiness'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>-->
-              <!--</a>-->
-            <!--</td>-->
-          <!--</tr>-->
-          <!--</thead>-->
-
-          <!--<tbody>-->
-          <!--<tr ng-repeat="roll in sushi | orderBy:sortType:sortReverse | filter:searchFish">-->
-            <!--<td>{{ roll.name }}</td>-->
-            <!--<td>{{ roll.fish }}</td>-->
-            <!--<td>{{ roll.tastiness }}</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-
-        <!--</table>-->
-
+      <!--<div class="attendanceChart">-->
+        <!--<form>-->
+          <!--<div class="form-group">-->
+            <!--<div class="input-group">-->
+              <!--&lt;!&ndash;<div class="input-group-addon"><i class="fa fa-search"></i></div>&ndash;&gt;-->
+              <!--<input type="text" class="form-control" placeholder="eg: Oct 12, 2015" ng-model="searchDate">-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
 
         <table class="table">
 
@@ -126,29 +90,23 @@
             <td>
               <a href="javascript:void(0)" >
                 <h5>Date</h5>
-                <!--<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>-->
               </a>
             </td>
             <td>
               <a href="javascript:void(0)" >
                 <h5>Start Time</h5>
-                <!--<span ng-show="sortType == 'fish' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'fish' && sortReverse" class="fa fa-caret-up"></span>-->
               </a>
             </td>
             <td>
               <a href="javascript:void(0)" >
                 <h5>End Time</h5>
-                <!--<span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>-->
               </a>
             </td>
           </tr>
           </thead>
 
           <tbody>
-          <tr ng-repeat="attendance in tableData">
+          <tr ng-repeat="attendance in tableData ">
             <td>{{ attendance.date | date }}</td>
             <td>{{ attendance.startTime }}</td>
             <td>{{ attendance.endTime }}</td>

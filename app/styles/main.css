@@ -6,14 +6,14 @@
 }
 
 body {
-  margin-top: 50px;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 400
+
 }
 
 h1,h2,h3,h4,h5,h6,.navbar-brand,.brand-name {
   font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: 400
+  font-weight: 400;
 }
 
 p.lead {
@@ -22,6 +22,7 @@ p.lead {
 }
 
 body {
+  font-size: 15px !important;
   padding: 0;
 }
 
@@ -86,7 +87,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 850px;
   }
 
   /* Remove the padding we set earlier */
@@ -106,13 +107,28 @@ body {
   }
 }
 
-#logoutBtn{
-  background-color: darkturquoise;
+
+.attendanceHolder{
+  padding-bottom: 60px;
 }
 
-/*#addUserBtn{*/
-  /*font-size:x-large;*/
-/*}*/
+.tableAlign{
+  text-align: right;
+}
+
+
+#logoutBtn{
+  background-color: darkturquoise;
+  font-size:x-large;
+}
+
+#addUserBtn{
+  font-size:x-large;
+}
+
+#userlistBtn{
+  font-size:x-large;
+}
 
 .main-fab {
   /*position:absolute;*/
@@ -187,4 +203,9 @@ calendar-md md-content>md-content.calendar>:not(:first-child)>* {
 
 .layout-padding{
   padding: 25px;
+}
+
+md-toolbar.md-menu-toolbar {
+  background-color: rgb(248, 248, 248);
+  color: rgba(0,0,0,0.87);
 }

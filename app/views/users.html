@@ -20,29 +20,31 @@
 
 
 <div class="container">
-  <md-toolbar class="md-menu-toolbar">
+  <md-card>
+    <md-toolbar class="md-menu-toolbar">
     <div class="md-toolbar-tools ">
-      <h6>WELCOME <br>ADMIN</h6>
+      <h5>Welcome <br>admin</h5>
       <div  flex="70"></div>
-      <div class="main-fab ">
-        <md-button ng-click="logoutUser()" class=" md-fab md-accent" id="logoutBtn">
-          <md-tooltip md-direction="top">
-            Logout
-          </md-tooltip>
-          <md-icon md-svg-src="images/leftarrow30.svg"></md-icon>
-        </md-button>
-      </div>
       <div  class="main-fab ">
         <md-button ng-click="addUserCounter()"  class=" md-fab md-accent" id="addUserBtn">
-          <md-tooltip md-direction="right">
+          <md-tooltip md-direction="top">
             Add Users
           </md-tooltip>
-          {{sign}}
+          <i ng-hide="counter%2" ng-show="!(counter%2)" class="fa fa-plus "></i>
+          <i ng-hide="!(counter%2)" ng-show="counter%2" class="fa fa-times"></i>
+        </md-button>
+      </div><div class="main-fab ">
+        <md-button ng-click="logoutUser()" class=" md-fab md-accent" id="logoutBtn">
+          <md-tooltip md-direction="right">
+            Logout
+          </md-tooltip>
+          <i class="fa fa-sign-out"></i>
+          <!--<md-icon md-svg-src="images/leftarrow30.svg"></md-icon>-->
         </md-button>
       </div>
     </div>
   </md-toolbar>
-
+  </md-card>
   <br>
 
   <md-content>
@@ -56,107 +58,95 @@
       </md-toolbar>
 
       <md-content class="attendanceChart" ng-hide="!(counter%2)" ng-show="counter%2"  layout-padding layout="row" layout-sm="column">
-        <form id="addUserForm">
-          <md-input-container>
+        <form name="userForm" id="addUserForm">
+          <md-input-container >
             <label>Username</label>
-            <input id="createUsername" ng-model="user.username">
+            <input md-maxlength="20" required name="name" ng-model="user.username">
+            <div ng-messages="userForm.name.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>
+              <div ng-message="md-minlength">The name has to be more than 3 characters long.</div>
+            </div>
           </md-input-container>
-          <md-input-container>
+          <md-input-container >
             <label>Password</label>
-            <input id="createPassword" ng-model="user.password">
+            <input  md-maxlength="20" required name="password" ng-model="user.password">
+            <div ng-messages="userForm.password.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>
+              <div ng-message="md-minlength">The name has to be more than 3 characters long.</div>
+            </div>
           </md-input-container>
-          <div flex="45"></div>
+          <div flex="60"></div>
           <md-input-container>
             <md-button class="md-raised" ng-click="addUser(user.username,user.password);retrieve()"> Submit </md-button>
           </md-input-container>
         </form>
       </md-content>
 
-      <md-content class="attendanceChart">
-      <md-list>
-        <md-list-item class="md-2-line" ng-repeat="item in userlist">
-          <div class="md-list-item-text">
-            <h4>{{item}}</h4>
-            <!--<h4>{{item.who}}</h4>-->
-            <!--<p>{{item.notes}}</p>-->
-          </div>
-          <div flex="55"></div>
-          <md-button class="primary"  ng-href="#/users/{{item}}">
-            <md-tooltip md-direction="right">
-            Check {{item}}'s attendance
-            </md-tooltip>
-            attendance
-          </md-button>
-          <md-divider ng-if="!$last"></md-divider>
-        </md-list-item>
-      </md-list>
-      </md-content>
-      <br>
-      <br>
-
-      <!--<md-toolbar>-->
-        <!--<div class="md-toolbar-tools">-->
-          <!--<h2>-->
-            <!--<span>Day-wise Attendance</span>-->
-          <!--</h2>-->
-        <!--</div>-->
-      <!--</md-toolbar>-->
-      <!--<md-content class="attendanceChart">-->
-        <!--<h5 class="md-title" id="datepickerHeading">Pick a date to see attendance</h5>-->
-        <!--<md-datepicker ng-model="myDate" md-placeholder="Enter date"-->
-                       <!--md-min-date="minDate" md-max-date="maxDate">-->
-        <!--</md-datepicker>-->
-        <!--<h5>{{myDate | date}}</h5>-->
+      <!--<md-content class="attendanceChart" ng-hide="!(counter%2)" ng-show="counter%2"  layout-padding layout="row" layout-sm="column">-->
+        <!--<form  id="addUserForm">-->
+          <!--<md-input-container>-->
+            <!--<label>Username</label>-->
+            <!--<input id="createUsername" ng-model="user.username">-->
+          <!--</md-input-container>-->
+          <!--<md-input-container>-->
+            <!--<label>Password</label>-->
+            <!--<input id="createPassword" ng-model="user.password">-->
+          <!--</md-input-container>-->
+          <!--<div flex="60"></div>-->
+          <!--<md-input-container>-->
+            <!--<md-button class="md-raised" ng-click="addUser(user.username,user.password);retrieve()"> Submit </md-button>-->
+          <!--</md-input-container>-->
+        <!--</form>-->
       <!--</md-content>-->
 
-      <!--<div class="attendanceChart">-->
-        <!--<form>-->
-          <!--<div class="form-group">-->
-            <!--<div class="input-group">-->
-              <!--&lt;!&ndash;<div class="input-group-addon"><i class="fa fa-search"></i></div>&ndash;&gt;-->
-              <!--<input type="text" class="form-control" placeholder="Search da Fish" ng-model="searchFish">-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</form>-->
+      <div class="attendanceChart">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+              <!--<div class="input-group-addon"><i class="fa fa-search"></i></div>-->
+              <input type="text" class="form-control" placeholder="Search Users" ng-model="searchUser">
+            </div>
+          </div>
+        </form>
 
-        <!--<table class="table  ">-->
+        <table class="table">
 
-          <!--<thead>-->
-          <!--<tr>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'name'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>-->
+          <thead>
+          <tr>
+            <td>
+              <a href="javascript:void(0)" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                <h5>USERS</h5>
+                <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td class="tableAlign">
+              <!--<a href="javascript:void(0)">-->
+                <h5>CHECK ATTENDANCE</h5>
               <!--</a>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'fish'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'fish' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'fish' && sortReverse" class="fa fa-caret-up"></span>-->
-              <!--</a>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<a href="javascript:void(0)" ng-click="sortType = 'tastiness'; sortReverse = !sortReverse">-->
-                <!--<h5>Dates</h5>-->
-                <!--<span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>-->
-                <!--<span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>-->
-              <!--</a>-->
-            <!--</td>-->
-          <!--</tr>-->
-          <!--</thead>-->
+            </td>
+          </tr>
+          </thead>
 
-          <!--<tbody>-->
-          <!--<tr ng-repeat="roll in sushi | orderBy:sortType:sortReverse | filter:searchFish">-->
-            <!--<td>{{ roll.name }}</td>-->
-            <!--<td>{{ roll.fish }}</td>-->
-            <!--<td>{{ roll.tastiness }}</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
+          <tbody>
+          <tr ng-repeat="item in userlist | orderBy:sortType:sortReverse | filter:searchUser">
+            <td><b>{{ item }}</b></td>
+            <td class="tableAlign">
+              <md-button class="md-raised"  ng-href="#/users/{{item}}">
+                <md-tooltip md-direction="right">
+                  Check {{item}}'s attendance
+                </md-tooltip>
+                attendance
+              </md-button>
+            </td>
+          </tr>
+          </tbody>
 
-        <!--</table>-->
-      <!--</div>-->
+        </table>
+      </div>
+      <br>
     </md-card>
   </md-content>
 </div>
