@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row" >
+    <div class="col-sm-offset-3 col-sm-6" id="loginPortal">
+      <h1 id="loginHeader"><span class="fa fa-sign-in"></span>Login</h1>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" name="userForm" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid }">
+          <label>Username</label>
+          <input type="text" name="name" class="form-control"
+                 ng-model="generalUser.username"
+                 ng-minlength="3"
+                 ng-maxlength="20"
+                 required>
+
+          <div class="help-block" ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+            <p ng-message="minlength">Your name is to short.</p>
+            <p ng-message="maxlength">Your name is too long.</p>
+            <p ng-message="required">Your name is required.</p>
+            <!--<p ng-message="text">Needs to be a valid name.</p>-->
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': userForm.password.$touched && userForm.password.$invalid }">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control"
+                 ng-model="generalUser.password"
+                 ng-minlength="3"
+                 ng-maxlength="20"
+                 required>
+
+          <div class="help-block" ng-messages="userForm.password.$error" ng-if="userForm.password.$touched">
+            <div>
+              <p ng-message="required">Password is required</p>
+              <p ng-message="minlength">Your password is too short</p>
+              <p ng-message="maxlength">Your password is too long</p>
+              <!--<p ng-message="email">This needs to be a valid email</p>-->
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <md-button class="md-raised" ng-click="submit(generalUser.username,generalUser.password)"> Submit </md-button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

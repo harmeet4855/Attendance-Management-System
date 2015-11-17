@@ -1,0 +1,190 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  margin-top: 50px;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400
+}
+
+h1,h2,h3,h4,h5,h6,.navbar-brand,.brand-name {
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400
+}
+
+p.lead {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400
+}
+
+body {
+  padding: 0;
+}
+
+.navbar-header {
+  float: left;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+}
+.navbar-brand {float:none;}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+#logoutBtn{
+  background-color: darkturquoise;
+}
+
+/*#addUserBtn{*/
+  /*font-size:x-large;*/
+/*}*/
+
+.main-fab {
+  /*position:absolute;*/
+  z-index:20;
+  font-size:30px;
+  transform:scale(.88,.88);
+}
+
+#addUserForm{
+  display: flex;
+}
+
+#headingUser{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.md-datepicker-calendar-pane{
+  background-color: white;
+}
+
+.md-calendar-day-header {
+  background: rgb(224,224,224);
+  color: rgba(0,0,0,0.87);
+}
+
+.md-calendar-date-selection-indicator:hover {
+  background: rgb(224,224,224);
+}
+
+.md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+  background: rgb(16,108,200);
+  color: rgba(255,255,255,0.87);
+  border-color: transparent;
+}
+
+.md-calendar-date-disabled{
+  color: rgba(0,0,0,0.26);
+}
+
+.md-datepicker-calendar-pane {
+  border-style: none;
+}
+
+.md-datepicker-calendar-pane.md-pane-open{
+  width: 308px;
+}
+
+#datepickerHeading{
+  display: inline-flex;
+}
+
+.attendanceChart{
+  padding : 16px
+}
+
+calendar-md .md-toolbar-tools h2{
+  overflow-x: visible;
+  /*text-overflow: clip;*/
+}
+
+calendar-md md-content>md-content.calendar>:not(:first-child)>.active {
+   box-shadow: none;
+   background: transparent;
+}
+
+calendar-md md-content>md-content.calendar>:not(:first-child)>* {
+   border-bottom: none;
+   border-right: none;
+}
+
+.layout-padding{
+  padding: 25px;
+}
